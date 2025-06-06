@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Car Rental</title>
+    <style>
+      .item {
+        padding: 10px;
+        margin: 12px 0;
+        border-radius: 8px;
+        background-color: #d4f49d;
+      }
+    </style>
+</head>
+<body>
+  <h2>Danh sách ô tô cho thuê</h2>
+  <div id="car-info"></div>
+
+  <script>
+    const jsonString = `[
+      {
+        "hang_xe": "Toyota Camry",
+        "anh": "https://vov.vn/sites/default/files/styles/large/public/2022-08/289624929_453408263095020_5408162982360432160_n.png",
+        "so_cho": 5,
+        "gia_thue": "1.200.000",
+        "mo_ta": "Xe sang trọng, tiện nghi hiện đại, phù hợp di chuyển trong thành phố và đi xa."
+      },
+      {
+        "hang_xe": "Honda CR-V",
+        "anh": "https://hondaotomienbac.com/media/com_eshop/products/resized/HONDA%20CRV%202023%2032-342x260.jpg",
+        "so_cho": 7,
+        "gia_thue": "1.500.000",
+        "mo_ta": "Rộng rãi, mạnh mẽ, thích hợp gia đình và du lịch."
+      },
+      {
+        "hang_xe": "Mazda CX-5",
+        "anh": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_LabgKGuyrM3CChtu-vgA7EI0eUlNaOzKEg&s",
+        "so_cho": 5,
+        "gia_thue": "1.300.000",
+        "mo_ta": "Xe thiết kế thể thao, vận hành êm ái, phù hợp di chuyển đường dài."
+      },
+      {
+        "hang_xe": "Ford Transit",
+        "anh": "https://images2.thanhnien.vn/zoom/686_429/528068263637045248/2023/10/31/ford-transit-1-16987187371112081041151-68-73-667-1031-crop-16987188487491422173005.jpg",
+        "so_cho": 16,
+        "gia_thue": "2.000.000",
+        "mo_ta": "Xe 16 chỗ rộng rãi, lý tưởng cho nhóm lớn hoặc đi du lịch theo đoàn."
+      }
+    ]`;
+
+    const cars = JSON.parse(jsonString);
+    const carInfo = document.getElementById("car-info");
+
+    let i = 0;
+    while (i < cars.length) {
+      const car = cars[i];
+      const carDiv = document.createElement("div");
+      carDiv.className = "item";
+      carDiv.innerHTML =
+        "<h3>" + car.hang_xe + "</h3>" +
+        '<img src="' + car.anh + '" alt="' + car.hang_xe + '" width="300">' +
+        "<p><strong>Số chỗ: </strong>" + car.so_cho + "</p>" +
+        "<p><strong>Giá thuê: </strong>" + car.gia_thue + " VND/ngày</p>" +
+        "<p><strong>Mô tả: </strong>" + car.mo_ta + "</p>";
+      carInfo.appendChild(carDiv);
+      i++;
+    }
+  </script>
+</body>
+</html>
